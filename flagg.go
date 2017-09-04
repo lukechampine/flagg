@@ -10,9 +10,11 @@ import (
 var Root = flag.CommandLine
 
 // New returns a new flag.FlagSet. It is equivalent to flag.NewFlagSet(name,
-// flag.ExitOnError).
-func New(name string) *flag.FlagSet {
-	return flag.NewFlagSet(name, flag.ExitOnError)
+// flag.ExitOnError), and setting f.Usage = SimpleUsage(f, usage)
+func New(name, usage string) *flag.FlagSet {
+	f := flag.NewFlagSet(name, flag.ExitOnError)
+	f.Usage = SimpleUsage(f, usage)
+	return f
 }
 
 // SimpleUsage returns a func that writes usage to os.Stderr. If cmd has

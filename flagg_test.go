@@ -7,9 +7,9 @@ import (
 )
 
 func TestParse(t *testing.T) {
-	foo := New("foo")
+	foo := New("foo", "")
 	v := foo.Bool("v", false, "")
-	bar := New("bar")
+	bar := New("bar", "")
 	os.Args = []string{"foo", "-v", "bar"}
 	cmd := Parse(Tree{
 		Cmd: foo,
@@ -26,7 +26,7 @@ func TestParse(t *testing.T) {
 }
 
 func TestSimpleUsage(t *testing.T) {
-	foo := New("foo")
+	foo := New("foo", "")
 	usage := "foo bar baz"
 
 	// no flags
