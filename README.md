@@ -28,6 +28,7 @@ verbose := rootCmd.Bool("v", false, "display verbose output")
 // flagg.New constructs a *flag.FlagSet with the given name and usage
 // description
 fooCmd := flagg.New("foo", "The foo subcommand")
+bars := fooCmd.Int("bars", 0, "number of bars to foo")
 quuxCmd := flagg.New("quux", "The quux subcommand")
 
 // construct the command hierarchy
