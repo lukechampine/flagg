@@ -16,15 +16,15 @@ func New(name, usage string) *flag.FlagSet {
 	return f
 }
 
-// SimpleUsage returns a func that writes usage to os.Stderr. If cmd has
+// SimpleUsage returns a func that writes usage to cmd.Output(). If cmd has
 // associated flags, the func also calls cmd.PrintDefaults.
 func SimpleUsage(cmd *flag.FlagSet, usage string) func() {
 	return func() {
-		os.Stderr.WriteString(usage)
+		cmd.Output().Write([]byte(usage))
 		numFlags := 0
 		cmd.VisitAll(func(*flag.Flag) { numFlags++ })
 		if numFlags > 0 {
-			os.Stderr.WriteString("\nFlags:\n")
+			cmd.Output().Write([]byte("\nFlags:\n"))
 			cmd.PrintDefaults()
 		}
 	}
