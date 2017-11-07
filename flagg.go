@@ -6,7 +6,6 @@ package flagg
 import (
 	"flag"
 	"os"
-	"unsafe"
 )
 
 // Root is the default root flag.FlagSet.
@@ -51,22 +50,10 @@ func parse(tree Tree, args []string) *flag.FlagSet {
 	args = tree.Cmd.Args()
 	if len(args) > 0 {
 		for _, t := range tree.Sub {
-			if name(t.Cmd) == args[0] {
+			if t.Cmd.Name() == args[0] {
 				return parse(t, args[1:])
 			}
 		}
 	}
 	return tree.Cmd
-}
-
-// unfortunately the flag API doesn't provide a way to access the name of a
-// FlagSet after it's created, so we have to resort to this hack for now.
-func name(f *flag.FlagSet) string {
-	// from src/flag/flag.go
-	// This should be relatively safe, since the first two fields of
-	// flag.FlagSet haven't changed in 6 years (!!)
-	return (*struct {
-		usage func()
-		name  string
-	})(unsafe.Pointer(f)).name
 }
