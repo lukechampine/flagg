@@ -32,7 +32,7 @@ bars := fooCmd.Int("bars", 0, "number of bars to foo")
 quuxCmd := flagg.New("quux", "The quux subcommand")
 
 // construct the command hierarchy
-tree := flag.Tree{
+tree := flagg.Tree{
 	Cmd: rootCmd,
 	Sub: []flagg.Tree{
 		{Cmd: fooCmd},
