@@ -1,3 +1,6 @@
+// Package flagg provides a simple means of constructing CLI command
+// hierarchies. A hierarchy is simply a tree of flag.FlagSets; the Parse
+// function is then used to determine which command is being invoked.
 package flagg
 
 import (
