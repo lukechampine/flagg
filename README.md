@@ -17,6 +17,9 @@ too many bells and whistles for my liking.
 a utility for constructing a hierarchy of `*flag.FlagSet`-based commands,
 parsing them, and identifying which command was selected.
 
+**NOTE: `flagg` requires Go 1.10, which added new methods to the flag.FlagSet
+type.**
+
 ## Example
 
 ```go
