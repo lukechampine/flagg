@@ -1,11 +1,11 @@
 flagg
 -----
 
-[![GoDoc](https://godoc.org/github.com/lukechampine/flagg?status.svg)](https://godoc.org/github.com/lukechampine/flagg)
-[![Go Report Card](http://goreportcard.com/badge/github.com/lukechampine/flagg)](https://goreportcard.com/report/github.com/lukechampine/flagg)
+[![GoDoc](https://godoc.org/lukechampine.com/flagg?status.svg)](https://godoc.org/lukechampine.com/flagg)
+[![Go Report Card](http://goreportcard.com/badge/lukechampine.com/flagg)](https://goreportcard.com/report/lukechampine.com/flagg)
 
 ```
-go get github.com/lukechampine/flagg
+go get lukechampine.com/flagg
 ```
 
 `flagg` is a tiny package that makes it easier to build CLI apps that use
