@@ -44,7 +44,7 @@ func TestSimpleUsage(t *testing.T) {
 Flags:
   -v	
 `
-	if out := string(buf.Next(len(usage))); out != usage {
-		t.Fatalf("expected %q, got %q", usage, out)
+	if out := string(buf.Next(len(exp))); out != exp {
+		t.Fatalf("expected %q, got %q", exp, out)
 	}
 }
