@@ -11,14 +11,13 @@ go get lukechampine.com/flagg
 `flagg` is a tiny package that makes it easier to build CLI apps that use
 subcommands. I built it because the stdlib `flag` package is too low-level,
 but popular alternatives like `spf13/cobra` are full-fledged frameworks with
-too many bells and whistles for my liking.
+too many bells and whistles for my liking. `flagg` is 67 lines of code and
+imports only stdlib packages.
 
-`flagg` is designed around the stdlib `*flag.FlagSet` type. Simply put, it is
-a utility for constructing a hierarchy of `*flag.FlagSet`-based commands,
-parsing them, and identifying which command was selected.
-
-**NOTE: `flagg` requires Go 1.10, which added new methods to the flag.FlagSet
-type.**
+`flagg` is designed around the stdlib `*flag.FlagSet` type. You represent each
+subcommand in your app with a `*flag.FlagSet`, and arrange them into a hierarchy
+with `flagg.Tree`. Then just call `flagg.Parse` to parse the subcommand selected
+by `os.Args`.
 
 ## Example
 
