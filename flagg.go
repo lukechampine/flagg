@@ -36,10 +36,9 @@ func SimpleUsage(cmd *flag.FlagSet, usage string) func() {
 // IsDefined returns true if flg was supplied to cmd. IsDefined may only be
 // called after cmd has been parsed.
 func IsDefined(cmd *flag.FlagSet, flg string) bool {
-	defined := make(map[string]struct{}, cmd.NFlag())
-	cmd.Visit(func(f *flag.Flag) { defined[f.Name] = struct{}{} })
-	_, ok := defined[flg]
-	return ok
+	defined := false
+	cmd.Visit(func(f *flag.Flag) { defined = defined || f.Name == flg })
+	return defined
 }
 
 // A Tree is a tree of commands and subcommands.
